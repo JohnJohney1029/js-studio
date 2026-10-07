@@ -1,7 +1,7 @@
 // JS Web Studio - main interactions
 // Change this number to your WhatsApp number in international format.
 // Example Pakistan: 923001234567 (do NOT add + or spaces).
-const WHATSAPP_NUMBER = "923001234567";
+const WHATSAPP_NUMBER = "923167342317";
 
 const whatsappMessage = encodeURIComponent(
   "Hi JS Web Studio! I want to build a website. I would like to discuss my project."
