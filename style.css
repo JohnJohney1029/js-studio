@@ -525,8 +525,33 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 1;
-  opacity: .45;
+
+  /* Background ke peeche */
+  z-index: 0;
+
+  opacity: .35;
+}
+
+
+/* Mouse trail canvas */
+#mouseTrail {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+
+  /* Content ke upar, lekin images ke neeche */
+  z-index: 2;
+}
+
+
+/* Website content */
+.header,
+main,
+footer {
+  position: relative;
+  z-index: 3;
 }
 
 
