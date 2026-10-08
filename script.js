@@ -463,7 +463,7 @@ if (trailCanvas) {
       }
 
       trailCtx.strokeStyle =
-        "rgba(22, 184, 244, 0.8)";
+        "rgba(22, 184, 244, 0.5)";
 
       trailCtx.lineWidth = 4.5;
       trailCtx.lineCap = "round";
