@@ -130,8 +130,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const distance =
           (center - viewportHeight / 2) * 0.035;
 
-        image.style.transform =
-          `scale(1.03) translateY(${distance}px)`;
+  image.style.transform =
+  `translateY(${distance}px) scale(1.03)`;
 
       }
 
@@ -561,3 +561,5 @@ if (trailCanvas) {
   );
 
 }
+
+});
