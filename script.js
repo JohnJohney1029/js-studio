@@ -231,26 +231,29 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* -------------------------------------------------------
-     WATER PARTICLES
-  ------------------------------------------------------- */
+ /* -------------------------------------------------------
+   WATER PARTICLES
+   Falling from TOP to BOTTOM
+------------------------------------------------------- */
 
-  const canvas =
-    document.getElementById("waterParticles");
+const canvas =
+  document.getElementById("waterParticles");
 
-  if (!canvas) return;
+if (canvas) {
 
   const ctx = canvas.getContext("2d");
 
   let particles = [];
 
-  function resizeCanvas() {
+  function resizeWaterCanvas() {
+
+    const dpr = window.devicePixelRatio || 1;
 
     canvas.width =
-      window.innerWidth * devicePixelRatio;
+      window.innerWidth * dpr;
 
     canvas.height =
-      window.innerHeight * devicePixelRatio;
+      window.innerHeight * dpr;
 
     canvas.style.width =
       window.innerWidth + "px";
@@ -258,47 +261,52 @@ document.addEventListener("DOMContentLoaded", () => {
     canvas.style.height =
       window.innerHeight + "px";
 
-    ctx.scale(
-      devicePixelRatio,
-      devicePixelRatio
+    ctx.setTransform(
+      dpr,
+      0,
+      0,
+      dpr,
+      0,
+      0
     );
-
   }
 
 
-  function createParticles() {
+  function createWaterParticles() {
 
     particles = [];
 
     const amount =
       window.innerWidth < 700 ? 35 : 70;
 
-
     for (let i = 0; i < amount; i++) {
 
       particles.push({
 
-        x: Math.random() * window.innerWidth,
+        x:
+          Math.random() *
+          window.innerWidth,
 
-        y: Math.random() * window.innerHeight,
+        y:
+          Math.random() *
+          window.innerHeight,
 
         size:
-          Math.random() * 2.5 + 0.5,
+          Math.random() * 2 + 0.5,
 
         speed:
-          Math.random() * 0.35 + 0.08,
+          Math.random() * 0.7 + 0.25,
 
         opacity:
-          Math.random() * 0.45 + 0.15
+          Math.random() * 0.35 + 0.08
 
       });
 
     }
-
   }
 
 
-  function drawParticles() {
+  function drawWaterParticles() {
 
     ctx.clearRect(
       0,
@@ -310,15 +318,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     particles.forEach(particle => {
 
-      particle.y -= particle.speed;
+      /* TOP → BOTTOM */
+      particle.y += particle.speed;
 
 
-      if (particle.y < -10) {
-        particle.y =
-          window.innerHeight + 10;
+      /* Screen ke neeche pohanchay to wapas TOP */
+      if (
+        particle.y >
+        window.innerHeight + 10
+      ) {
+
+        particle.y = -10;
 
         particle.x =
-          Math.random() * window.innerWidth;
+          Math.random() *
+          window.innerWidth;
       }
 
 
@@ -340,25 +354,210 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    requestAnimationFrame(drawParticles);
+    requestAnimationFrame(
+      drawWaterParticles
+    );
+  }
+
+
+  resizeWaterCanvas();
+
+  createWaterParticles();
+
+  drawWaterParticles();
+
+
+  window.addEventListener(
+    "resize",
+    () => {
+
+      resizeWaterCanvas();
+
+      createWaterParticles();
+
+    }
+  );
+
+}
+
+
+/* -------------------------------------------------------
+   MOUSE HARD-BIT / HARD-LINE TRAIL
+------------------------------------------------------- */
+
+const trailCanvas =
+  document.getElementById("mouseTrail");
+
+if (trailCanvas) {
+
+  const trailCtx =
+    trailCanvas.getContext("2d");
+
+  let mouseX =
+    window.innerWidth / 2;
+
+  let mouseY =
+    window.innerHeight / 2;
+
+  let previousX = mouseX;
+  let previousY = mouseY;
+
+  let trailPoints = [];
+
+
+  function resizeTrailCanvas() {
+
+    const dpr =
+      window.devicePixelRatio || 1;
+
+    trailCanvas.width =
+      window.innerWidth * dpr;
+
+    trailCanvas.height =
+      window.innerHeight * dpr;
+
+    trailCanvas.style.width =
+      window.innerWidth + "px";
+
+    trailCanvas.style.height =
+      window.innerHeight + "px";
+
+    trailCtx.setTransform(
+      dpr,
+      0,
+      0,
+      dpr,
+      0,
+      0
+    );
+  }
+
+
+  window.addEventListener(
+    "mousemove",
+    event => {
+
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+
+      const movement =
+        Math.hypot(
+          mouseX - previousX,
+          mouseY - previousY
+        );
+
+
+      if (movement > 2) {
+
+        trailPoints.push({
+
+          x: mouseX,
+
+          y: mouseY,
+
+          life: 1
+
+        });
+
+      }
+
+
+      previousX = mouseX;
+      previousY = mouseY;
+
+    },
+    { passive: true }
+  );
+
+
+  function drawMouseTrail() {
+
+    trailCtx.clearRect(
+      0,
+      0,
+      window.innerWidth,
+      window.innerHeight
+    );
+
+
+    /* Fade old points */
+
+    trailPoints.forEach(point => {
+      point.life -= 0.035;
+    });
+
+
+    trailPoints =
+      trailPoints.filter(
+        point => point.life > 0
+      );
+
+
+    /* Draw HARD-BIT style line */
+
+    if (trailPoints.length > 1) {
+
+      trailCtx.beginPath();
+
+      trailCtx.moveTo(
+        trailPoints[0].x,
+        trailPoints[0].y
+      );
+
+
+      for (
+        let i = 1;
+        i < trailPoints.length;
+        i++
+      ) {
+
+        const point =
+          trailPoints[i];
+
+        trailCtx.lineTo(
+          point.x,
+          point.y
+        );
+
+      }
+
+
+      trailCtx.strokeStyle =
+        "rgba(70, 190, 255, 0.65)";
+
+      trailCtx.lineWidth = 1.5;
+
+      trailCtx.lineCap = "round";
+
+      trailCtx.lineJoin = "round";
+
+      trailCtx.shadowBlur = 8;
+
+      trailCtx.shadowColor =
+        "rgba(40, 180, 255, 0.5)";
+
+      trailCtx.stroke();
+
+      trailCtx.shadowBlur = 0;
+
+    }
+
+
+    requestAnimationFrame(
+      drawMouseTrail
+    );
 
   }
 
 
-  resizeCanvas();
+  resizeTrailCanvas();
 
-  createParticles();
-
-  drawParticles();
+  drawMouseTrail();
 
 
-  window.addEventListener("resize", () => {
+  window.addEventListener(
+    "resize",
+    resizeTrailCanvas
+  );
 
-    resizeCanvas();
-
-    createParticles();
-
-  });
-
-
-});
+}
