@@ -381,96 +381,51 @@ if (canvas) {
 }
 
 
-/* -------------------------------------------------------
-   MOUSE HARD-BIT / HARD-LINE TRAIL
-------------------------------------------------------- */
+// ===============================
+// SMOOTH MOUSE TECH TRAIL
+// ===============================
 
-const trailCanvas =
-  document.getElementById("mouseTrail");
+const trailCanvas = document.getElementById("mouseTrail");
 
 if (trailCanvas) {
+  const trailCtx = trailCanvas.getContext("2d");
 
-  const trailCtx =
-    trailCanvas.getContext("2d");
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
 
-  let mouseX =
-    window.innerWidth / 2;
+  let currentX = mouseX;
+  let currentY = mouseY;
 
-  let mouseY =
-    window.innerHeight / 2;
-
-  let previousX = mouseX;
-  let previousY = mouseY;
-
-  let trailPoints = [];
-
+  let points = [];
 
   function resizeTrailCanvas() {
-
-    const dpr =
-      window.devicePixelRatio || 1;
-
-    trailCanvas.width =
-      window.innerWidth * dpr;
-
-    trailCanvas.height =
-      window.innerHeight * dpr;
-
-    trailCanvas.style.width =
-      window.innerWidth + "px";
-
-    trailCanvas.style.height =
-      window.innerHeight + "px";
-
-    trailCtx.setTransform(
-      dpr,
-      0,
-      0,
-      dpr,
-      0,
-      0
-    );
+    trailCanvas.width = window.innerWidth;
+    trailCanvas.height = window.innerHeight;
   }
 
+  window.addEventListener("resize", resizeTrailCanvas);
 
-  window.addEventListener(
-    "mousemove",
-    event => {
+  window.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  }, { passive: true });
 
-      mouseX = event.clientX;
-      mouseY = event.clientY;
+  function animateTrail() {
 
-      const movement =
-        Math.hypot(
-          mouseX - previousX,
-          mouseY - previousY
-        );
+    // Smoothly follow mouse
+    currentX += (mouseX - currentX) * 0.12;
+    currentY += (mouseY - currentY) * 0.12;
 
+    points.push({
+      x: currentX,
+      y: currentY,
+      life: 1
+    });
 
-      if (movement > 2) {
-
-        trailPoints.push({
-
-          x: mouseX,
-
-          y: mouseY,
-
-          life: 1
-
-        });
-
-      }
-
-
-      previousX = mouseX;
-      previousY = mouseY;
-
-    },
-    { passive: true }
-  );
-
-
-  function drawMouseTrail() {
+    // Keep trail short and smooth
+    if (points.length > 45) {
+      points.shift();
+    }
 
     trailCtx.clearRect(
       0,
@@ -479,87 +434,64 @@ if (trailCanvas) {
       window.innerHeight
     );
 
-
-    /* Fade old points */
-
-    trailPoints.forEach(point => {
-      point.life -= 0.035;
-    });
-
-
-    trailPoints =
-      trailPoints.filter(
-        point => point.life > 0
-      );
-
-
-    /* Draw HARD-BIT style line */
-
-    if (trailPoints.length > 1) {
+    if (points.length > 2) {
 
       trailCtx.beginPath();
 
       trailCtx.moveTo(
-        trailPoints[0].x,
-        trailPoints[0].y
+        points[0].x,
+        points[0].y
       );
 
+      for (let i = 1; i < points.length - 1; i++) {
 
-      for (
-        let i = 1;
-        i < trailPoints.length;
-        i++
-      ) {
+        const current = points[i];
+        const next = points[i + 1];
 
-        const point =
-          trailPoints[i];
+        const centerX =
+          (current.x + next.x) / 2;
 
-        trailCtx.lineTo(
-          point.x,
-          point.y
+        const centerY =
+          (current.y + next.y) / 2;
+
+        trailCtx.quadraticCurveTo(
+          current.x,
+          current.y,
+          centerX,
+          centerY
         );
-
       }
 
-
       trailCtx.strokeStyle =
-        "rgba(70, 190, 255, 0.65)";
+        "rgba(22, 184, 244, 0.65)";
 
-      trailCtx.lineWidth = 1.5;
-
+      trailCtx.lineWidth = 1.2;
       trailCtx.lineCap = "round";
-
       trailCtx.lineJoin = "round";
 
-      trailCtx.shadowBlur = 8;
-
+      trailCtx.shadowBlur = 10;
       trailCtx.shadowColor =
-        "rgba(40, 180, 255, 0.5)";
+        "rgba(22, 184, 244, 0.55)";
 
       trailCtx.stroke();
 
       trailCtx.shadowBlur = 0;
-
     }
 
+    // Fade old points
+    points.forEach(point => {
+      point.life -= 0.025;
+    });
 
-    requestAnimationFrame(
-      drawMouseTrail
+    points = points.filter(
+      point => point.life > 0
     );
 
+    requestAnimationFrame(animateTrail);
   }
 
-
   resizeTrailCanvas();
-
-  drawMouseTrail();
-
-
-  window.addEventListener(
-    "resize",
-    resizeTrailCanvas
-  );
-
+  animateTrail();
 }
 
 });
