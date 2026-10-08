@@ -462,20 +462,36 @@ if (trailCanvas) {
         );
       }
 
-      trailCtx.strokeStyle =
-        "rgba(22, 184, 244, 0.5)";
+// DARK BLUE OUTER LINE
+trailCtx.strokeStyle =
+  "rgba(0, 100, 210, 0.8)";
 
-      trailCtx.lineWidth = 5;
-      trailCtx.lineCap = "round";
-      trailCtx.lineJoin = "round";
+trailCtx.lineWidth = 9;
+trailCtx.lineCap = "round";
+trailCtx.lineJoin = "round";
 
-      trailCtx.shadowBlur = 10;
-      trailCtx.shadowColor =
-        "rgba(22, 184, 244, 0.55)";
+trailCtx.shadowBlur = 18;
+trailCtx.shadowColor =
+  "rgba(0, 100, 255, 0.65)";
 
-      trailCtx.stroke();
+trailCtx.stroke();
 
-      trailCtx.shadowBlur = 0;
+
+// BRIGHT CYAN INNER LINE
+trailCtx.strokeStyle =
+  "rgba(80, 225, 255, 1)";
+
+trailCtx.lineWidth = 3;
+trailCtx.lineCap = "round";
+trailCtx.lineJoin = "round";
+
+trailCtx.shadowBlur = 12;
+trailCtx.shadowColor =
+  "rgba(80, 225, 255, 0.9)";
+
+trailCtx.stroke();
+
+trailCtx.shadowBlur = 0;
     }
 
     // Fade old points
