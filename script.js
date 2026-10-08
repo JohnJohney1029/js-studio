@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
      WHATSAPP
   ------------------------------------------------------- */
 
-  const whatsappNumber = "92XXXXXXXXXX";
+  const whatsappNumber = "923167342317";
 
   const whatsappMessage =
     "Hello JS Studio! I want to discuss a website project.";
