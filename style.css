@@ -740,3 +740,86 @@ footer {
     animation-duration: 16s;
   }
 }
+
+/* =====================================
+   JS STUDIO - SEAMLESS INFINITE MARQUEE
+===================================== */
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+  border-top: 1px solid rgba(255,255,255,.15);
+  border-bottom: 1px solid rgba(255,255,255,.15);
+  background: rgba(0,0,0,.35);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: jsStudioMarquee 24s linear infinite !important;
+  will-change: transform;
+}
+
+.marquee-content {
+  flex: 0 0 auto;
+  min-width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 35px;
+  padding: 25px 35px;
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.marquee-content b {
+  color: #16b8f4;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+@keyframes jsStudioMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* SECOND STRIP SPACING */
+.marquee-secondary {
+  margin: 0 auto;
+}
+
+.marquee-secondary .marquee-content {
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+/* Keep the animation running */
+.marquee:hover .marquee-track {
+  animation-play-state: running !important;
+}
+
+/* MODERATELY MORE BACKGROUND DOTS */
+#waterParticles {
+  opacity: .45 !important;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .marquee-track {
+    animation-duration: 18s !important;
+  }
+
+  .marquee-content {
+    gap: 24px;
+    padding: 22px 24px;
+    font-size: 10px;
+  }
+}
