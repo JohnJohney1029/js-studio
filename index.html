@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#030b13">
+  <meta name="description" content="JS Studio designs bold, responsive websites for businesses, brands and creators. Tell us about your project and get a website quote on WhatsApp.">
+  <title>JS Studio — Websites Built to Stand Out</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true"></div>
+  <div class="page-shade" aria-hidden="true"></div>
+  <canvas id="waterParticles" aria-hidden="true"></canvas>
+  <canvas id="mouseTrail" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="header" id="siteHeader">
+    <a class="logo" href="#home" aria-label="JS Studio home">
+      <img src="logo.png" alt="" width="42" height="42">
+      <span class="logo-name">JS <b>STUDIO</b></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#services">Services</a><a href="#work">Work</a><a href="#process">Process</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="header-cta" data-whatsapp data-message="Hi JS Studio! I'd like a quote for a website.">Get a quote <span>↗</span></a>
+    <button class="hamburger" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobileNav"><i></i><i></i><i></i></button>
+  </header>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
+    <a href="#services">Services <span>01</span></a><a href="#work">Selected work <span>02</span></a><a href="#process">Our process <span>03</span></a><a href="#contact">Contact <span>04</span></a>
+    <a class="mobile-quote" data-whatsapp data-message="Hi JS Studio! I'd like a quote for a website.">Get a free quote ↗</a>
+  </nav>
+
+  <div class="side-dots" aria-hidden="true"><b class="active"></b><b></b><b></b><b></b><b></b><b></b></div>
+  <main>
+    <section class="hero" id="home" data-section>
+      <div class="hero-orbit" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="eyebrow"><span></span> INDEPENDENT DIGITAL WEB STUDIO</div>
+        <p class="hero-kicker">DESIGN WITH PURPOSE. BUILD WITH IMPACT.</p>
+        <h1>We build<br><em>bold</em> websites<span class="period">.</span></h1>
+        <p class="hero-description">Digital experiences for businesses ready to make a stronger first impression and grow online.</p>
+        <div class="hero-buttons"><a class="btn blue" href="#work">Explore our work <span>↘</span></a><a class="btn line" data-whatsapp data-message="Hi JS Studio! I'd like to discuss a website project.">Get a website quote <span>↗</span></a></div>
+        <div class="hero-proof"><span class="proof-dot"></span> YOUR IDEA, BUILT FOR THE WEB <span class="proof-divider">/</span> RESPONSIVE BY DESIGN</div>
+      </div>
+      <div class="hero-side-note"><span>JS / STUDIO</span><span>DESIGN · DEVELOP · LAUNCH</span></div>
+      <div class="hero-meta"><span>INDEPENDENT WEB STUDIO</span><a href="#intro" class="scroll-cue">SCROLL TO EXPLORE <i></i></a><span>EST. 2026</span></div>
+    </section>
+
+    <div class="marquee" aria-label="Our services"><div class="marquee-track"><div class="marquee-content"><span>WEB DESIGN</span><b>✦</b><span>BUSINESS WEBSITES</span><b>✦</b><span>LANDING PAGES</span><b>✦</b><span>DIGITAL EXPERIENCES</span><b>✦</b></div><div class="marquee-content" aria-hidden="true"><span>WEB DESIGN</span><b>✦</b><span>BUSINESS WEBSITES</span><b>✦</b><span>LANDING PAGES</span><b>✦</b><span>DIGITAL EXPERIENCES</span><b>✦</b></div></div></div>
+
+    <section class="intro section" id="intro" data-section>
+      <div class="section-tag"><span>01</span> / A LITTLE ABOUT US</div>
+      <div class="intro-grid"><div class="small-label">GOOD DESIGN<br>MAKES THE<br>DIFFERENCE.</div><div class="intro-main"><h2>Your website is your <em>first impression.</em></h2><p>We turn ideas into clear, modern websites that help people understand your business, trust your brand and take the next step.</p><a class="text-btn" data-whatsapp data-message="Hi JS Studio! I want to talk about a website for my business.">Let's talk about your idea <span>↗</span></a></div></div>
+      <div class="intro-foot"><span>STRATEGY-LED THINKING</span><span>DESIGN THAT FEELS RIGHT</span><span>BUILT FOR REAL PEOPLE</span></div>
+    </section>
+
+    <section class="services section" id="services" data-section>
+      <div class="section-tag"><span>02</span> / WHAT WE CAN BUILD</div>
+      <div class="section-heading-row"><h2 class="section-title">Services made for <em>ambition.</em></h2><p>From the first idea to a polished launch, we help bring your digital presence to life.</p></div>
+      <div class="service-stack">
+        <article class="service-card reveal"><div class="service-image"><img src="business.jpg" alt="Business website design example" loading="lazy"><span>01 / BUSINESS</span><i>↗</i></div><div class="service-copy"><p class="overline">A STRONGER ONLINE PRESENCE</p><h3>Business<br>websites</h3><p>Professional, responsive websites that introduce your business and make it easy for customers to learn about your services.</p><a data-whatsapp data-message="Hi JS Studio! I'm interested in a business website.">Build my business website <span>↗</span></a></div></article>
+        <article class="service-card reverse reveal"><div class="service-image"><img src="landing.jpg" alt="Landing page design example" loading="lazy"><span>02 / LANDING PAGES</span><i>↗</i></div><div class="service-copy"><p class="overline">ONE CLEAR GOAL</p><h3>Landing<br>pages</h3><p>Focused pages for products, campaigns or services, designed to explain the offer and guide visitors toward action.</p><a data-whatsapp data-message="Hi JS Studio! I need a landing page for my project.">Create a landing page <span>↗</span></a></div></article>
+        <article class="service-card reveal"><div class="service-image"><img src="web-design.jpg" alt="Custom web design example" loading="lazy"><span>03 / CUSTOM DESIGN</span><i>↗</i></div><div class="service-copy"><p class="overline">MADE AROUND YOUR BRAND</p><h3>Custom web<br>design</h3><p>A distinctive visual direction with thoughtful layouts, typography and details instead of a one-size-fits-all look.</p><a data-whatsapp data-message="Hi JS Studio! I'd like to discuss custom web design.">Discuss your design <span>↗</span></a></div></article>
+        <article class="service-card reverse reveal"><div class="service-image"><img src="digital.jpg" alt="Digital experience design example" loading="lazy"><span>04 / DIGITAL</span><i>↗</i></div><div class="service-copy"><p class="overline">DETAILS THAT MAKE IT FEEL ALIVE</p><h3>Digital<br>experiences</h3><p>Modern interactions, clear navigation and responsive details that help your website feel polished across screen sizes.</p><a data-whatsapp data-message="Hi JS Studio! I want to create a modern digital experience.">Let's create something <span>↗</span></a></div></article>
+      </div>
+    </section>
+
+    <section class="statement section" data-section>
+      <div class="statement-image reveal"><img src="strategy.jpg" alt="Planning and creative strategy" loading="lazy"><span>THOUGHTFUL FROM DAY ONE</span></div>
+      <div class="statement-copy reveal"><div class="section-tag"><span>03</span> / THE JS APPROACH</div><h2>Not just a website.<br><em>A digital identity.</em></h2><p>A good website should look considered, feel easy to use and make the next step obvious. We focus on the details that bring those things together.</p><div class="approach-list"><div><b>01</b><span><strong>Clear direction</strong><small>We start by understanding your goals.</small></span></div><div><b>02</b><span><strong>Purposeful design</strong><small>Every section has a job to do.</small></span></div><div><b>03</b><span><strong>Responsive build</strong><small>Designed to work across screen sizes.</small></span></div></div></div>
+    </section>
+
+    <section class="work section" id="work" data-section>
+      <div class="section-tag"><span>04</span> / SELECTED WORK</div>
+      <div class="work-head"><h2>Ideas into <em>interfaces.</em></h2><div><p>A glimpse at the kinds of digital projects we can create for businesses and brands.</p><span class="demo-note">PROJECT VISUALS / DEMO CONCEPTS</span></div></div>
+      <div class="work-grid">
+        <article class="work-item tall reveal"><a class="work-image" href="#contact" aria-label="Ask about a business website"><img src="business.jpg" alt="Business website concept" loading="lazy"><span class="work-arrow">↗</span></a><div class="work-caption"><small>BUSINESS WEBSITE / 01</small><h3>Business presence</h3><p>A clear home for your brand online.</p></div></article>
+        <article class="work-item reveal"><a class="work-image" href="#contact" aria-label="Ask about a landing page"><img src="landing.jpg" alt="Landing page concept" loading="lazy"><span class="work-arrow">↗</span></a><div class="work-caption"><small>LANDING PAGE / 02</small><h3>Product launch</h3><p>A focused page built around one message.</p></div></article>
+        <article class="work-item reveal"><a class="work-image" href="#contact" aria-label="Ask about a digital experience"><img src="digital.jpg" alt="Digital experience concept" loading="lazy"><span class="work-arrow">↗</span></a><div class="work-caption"><small>DIGITAL EXPERIENCE / 03</small><h3>Digital experience</h3><p>Modern visuals with useful interactions.</p></div></article>
+      </div>
+      <p class="portfolio-honesty">These are illustrative project visuals. Ask us about a concept tailored to your business.</p>
+    </section>
+
+    <section class="packages section" id="packages" data-section>
+      <div class="section-tag"><span>05</span> / START WITH THE RIGHT FIT</div>
+      <div class="section-heading-row"><h2 class="section-title">Your next website<br><em>starts here.</em></h2><p>Every project is different. Choose a starting point and we'll discuss the right scope and quote with you.</p></div>
+      <div class="package-grid">
+        <article class="package-card reveal"><div class="package-top"><span>01 / STARTER</span><span class="package-icon">↗</span></div><h3>Landing page</h3><p>For a product, service or campaign that needs a focused online home.</p><ul><li>Custom page layout</li><li>Mobile-friendly design</li><li>Clear contact call-to-action</li></ul><a data-whatsapp data-message="Hi JS Studio! Please quote me for a landing page.">Request a quote <span>↗</span></a></article>
+        <article class="package-card featured reveal"><div class="package-top"><span>02 / POPULAR START</span><span class="package-icon">✦</span></div><h3>Business website</h3><p>For businesses that need a professional online presence and service information.</p><ul><li>Multi-section website</li><li>Responsive page design</li><li>Services and contact details</li></ul><a data-whatsapp data-message="Hi JS Studio! Please quote me for a business website.">Request a quote <span>↗</span></a></article>
+        <article class="package-card reveal"><div class="package-top"><span>03 / CUSTOM</span><span class="package-icon">↗</span></div><h3>Custom project</h3><p>For a unique concept, custom layout or a more tailored digital experience.</p><ul><li>Project-specific scope</li><li>Custom visual direction</li><li>Features discussed in advance</li></ul><a data-whatsapp data-message="Hi JS Studio! I have a custom website project to discuss.">Discuss your project <span>↗</span></a></article>
+      </div>
+      <p class="package-note">No fixed prices shown because final cost depends on scope, features and content. Request a quote to discuss your requirements.</p>
+    </section>
+
+    <section class="process section" id="process" data-section>
+      <div class="section-tag"><span>06</span> / HOW WE WORK</div><h2 class="section-title">Four steps.<br><em>One clear direction.</em></h2>
+      <div class="steps"><article><b>01</b><h3>Tell us</h3><p>Share your business, goals and the kind of website you have in mind.</p></article><article><b>02</b><h3>Plan</h3><p>We discuss the page structure, visual direction, features and quote.</p></article><article><b>03</b><h3>Build</h3><p>We create the agreed website and refine the details together.</p></article><article><b>04</b><h3>Launch</h3><p>After final checks and approval, your website is ready to go live.</p></article></div>
+    </section>
+
+    <section class="faq section" id="faq" data-section>
+      <div class="section-tag"><span>07</span> / GOOD TO KNOW</div><div class="faq-layout"><h2 class="section-title">A few things<br><em>you may ask.</em></h2><div class="faq-list">
+        <details><summary>How do I get a website quote?<span>+</span></summary><p>Tap any quote button to open WhatsApp. Tell us what your business does, what pages you need and any examples you like.</p></details>
+        <details><summary>Will my website work on mobile?<span>+</span></summary><p>Responsive layout is part of the project approach. We'll discuss the content and features needed for your particular website.</p></details>
+        <details><summary>How long does a project take?<span>+</span></summary><p>Timing depends on the number of pages, features and how quickly content and feedback are provided. We'll discuss a realistic timeline before work starts.</p></details>
+        <details><summary>Can you design something custom?<span>+</span></summary><p>Yes. Share your idea, preferred style and goals, and we'll discuss what is practical for the project.</p></details>
+      </div></div>
+    </section>
+
+    <div class="marquee marquee-second" aria-label="Design, develop, create, launch"><div class="marquee-track"><div class="marquee-content"><span>DESIGN</span><b>✦</b><span>DEVELOP</span><b>✦</b><span>CREATE</span><b>✦</b><span>LAUNCH</span><b>✦</b></div><div class="marquee-content" aria-hidden="true"><span>DESIGN</span><b>✦</b><span>DEVELOP</span><b>✦</b><span>CREATE</span><b>✦</b><span>LAUNCH</span><b>✦</b></div></div></div>
+
+    <section class="contact section" id="contact" data-section>
+      <div class="contact-glow" aria-hidden="true"></div><div class="section-tag"><span>08</span> / YOUR PROJECT STARTS HERE</div><p class="contact-kicker">HAVE SOMETHING IN MIND?</p><h2>Let's make it<br><em>real.</em></h2><p class="contact-description">Tell us a little about your idea. We'll start with a conversation and work out the next step together.</p><a class="btn blue huge" data-whatsapp data-message="Hi JS Studio! I'd like a quote for a website. My business/project is: ">Get a website quote on WhatsApp <span>↗</span></a><span class="contact-footnote">NO PRESSURE · JUST A CONVERSATION</span>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="footer-top"><a class="logo footer-brand" href="#home"><img src="logo.png" alt="" width="38" height="38"><span class="logo-name">JS <b>STUDIO</b></span></a><p>Web design · Development · Digital experiences</p><a class="footer-link" href="#home">Back to top ↑</a></div><div class="footer-bottom"><small>© <span id="year"></span> JS Studio. All rights reserved.</small><small>DESIGNED TO STAND OUT.</small><a data-whatsapp data-message="Hi JS Studio! I'd like to discuss a website project.">Start a project ↗</a></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>
