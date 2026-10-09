@@ -620,3 +620,63 @@ footer {
   }
 
 }
+/* CONTINUOUS INFINITE TEXT STRIP */
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: jsMarquee 24s linear infinite;
+  will-change: transform;
+}
+
+.marquee-content {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  padding-right: 48px;
+  white-space: nowrap;
+}
+
+.marquee-content b {
+  color: #16b8f4;
+}
+
+@keyframes jsMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* REMOVE EXCESSIVE GAP BETWEEN PROCESS AND CONTACT */
+.process {
+  padding-bottom: 100px;
+}
+
+.contact {
+  min-height: 80vh;
+  padding-top: 100px;
+}
+
+@media (max-width: 768px) {
+  .process {
+    padding-bottom: 60px;
+  }
+
+  .contact {
+    min-height: 65vh;
+    padding-top: 70px;
+  }
+
+  .marquee-track {
+    animation-duration: 18s;
+  }
+}
