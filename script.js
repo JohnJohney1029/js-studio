@@ -277,7 +277,7 @@ if (canvas) {
     particles = [];
 
     const amount =
-      window.innerWidth < 700 ? 35 : 70;
+      window.innerWidth < 700 ? 45 : 85;
 
     for (let i = 0; i < amount; i++) {
 
