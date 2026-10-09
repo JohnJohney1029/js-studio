@@ -680,3 +680,63 @@ footer {
     animation-duration: 18s;
   }
 }
+
+/* =================================
+   JS STUDIO - INFINITE MARQUEE
+================================= */
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: jsStudioMarquee 22s linear infinite;
+  will-change: transform;
+}
+
+.marquee-content {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 48px;
+  padding-right: 48px;
+  white-space: nowrap;
+}
+
+.marquee-content b {
+  color: #16b8f4;
+  flex-shrink: 0;
+}
+
+/* Seamless, continuous movement */
+@keyframes jsStudioMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Keep moving when mouse is over the strip */
+.marquee:hover .marquee-track {
+  animation-play-state: running;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .marquee-content {
+    gap: 28px;
+    padding-right: 28px;
+  }
+
+  .marquee-track {
+    animation-duration: 16s;
+  }
+}
